@@ -1,3 +1,47 @@
-import { Routes } from '@angular/router';
+// import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+// export const routes: Routes = [];
+
+
+// 2
+
+// import { Routes } from '@angular/router';
+// import { provideRouter } from '@angular/router';
+// import { bootstrapApplication } from '@angular/platform-browser';
+
+// import { UserLoginComponent } from './user-login/user-login.component';
+// import { UserPagesComponent } from './user-pages/user-pages.component';
+// import { AuthGuard } from './auth.guard';
+
+// const routes: Routes = [
+//   { path: '', redirectTo: 'login', pathMatch: 'full' },
+//   { path: 'login', component: UserLoginComponent },
+//   { path: 'user-pages', component: UserPagesComponent, canActivate: [AuthGuard] },
+// ];
+
+// bootstrapApplication(UserLoginComponent, {
+//   providers: [provideRouter(routes)],
+// }).catch(err => console.error(err));
+
+
+// 3
+import { Routes } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { bootstrapApplication } from '@angular/platform-browser';
+
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserPagesComponent } from './user-pages/user-pages.component';
+import { AuthGuard } from './auth.guard';
+
+export const routes: Routes = [ 
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: UserLoginComponent },
+  { path: 'user-pages', component: UserPagesComponent, canActivate: [AuthGuard] },
+];
+
+bootstrapApplication(UserLoginComponent, {
+  providers: [provideRouter(routes)],
+}).catch(err => console.error(err));
+
+
+// dashboard
