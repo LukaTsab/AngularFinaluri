@@ -1,4 +1,4 @@
-<div class="main-container">
+<!-- <div class="main-container">
     <aside class="sidebar">
       <ul>
         <li>Woman's Fashion</li>
@@ -56,7 +56,6 @@
 
 
   <section class="carousel-container">
-    <!-- Countdown Timer -->
     <div class="countdown">
       <h2>Flash Sales</h2>
       <p>
@@ -64,23 +63,248 @@
       </p>
     </div>
 
-    <!-- Carousel -->
-    <div class="carousel">
-      <div
-        *ngFor="let item of cartItems"
-        class="carousel-item"
-      >
-        <img [src]="item.image" alt="{{ item.name }}" />
-        <h3>{{ item.name }}</h3>
-        <p>Old Price: ${{ item.oldPrice }}</p>
-        <p>New Price: ${{ item.newPrice }}</p>
-        <p>Rating: {{ item.rating }} ⭐</p>
+    
+
+    <div class="mt-2">
+      <div class="w-11-12">
+        <div class="relative">
+          <div class="flex space-x-4">
+            <div
+              class="flex-none w-1-3 p-4 bg-white rounded-lg shadow-md"
+              *ngFor="let card of cards.slice(currentIndex, currentIndex + 3); let i = index"
+              [attr.data-index]="i"
+            >
+              <img
+                class="w-full h-32 object-cover mb-4 rounded-lg"
+                [src]="card.image"
+                alt="Card"
+              />
+              <h3 class="text-lg font-bold">{{ card.title }}</h3>
+              <p class="text-gray-500">{{ card.description }}</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-4 relative bottom-44">
+            <button (click)="handlePrevCard()">❮ Previous</button>
+            <button (click)="handleNextCard()">Next ❯</button>
+          </div>
+        </div>
       </div>
     </div>
+    
   </section>
 
 
 
 
 
+  <div class="category-section">
+    <div class="category-header">
+      <span class="icon"></span>
+      <h3 class="category-title">Categories</h3>
+    </div>
+    <h2 class="section-title">Browse By Category</h2>
+    <div class="categories">
+      <div class="category-card">
+        <i class="icon-phone"></i>
+        <p>Phones</p>
+      </div>
+      <div class="category-card">
+        <i class="icon-computer"></i>
+        <p>Computers</p>
+      </div>
+      <div class="category-card">
+        <i class="icon-watch"></i>
+        <p>SmartWatch</p>
+      </div>
+      <div class="category-card active">
+        <i class="icon-camera"></i>
+        <p>Camera</p>
+      </div>
+      <div class="category-card">
+        <i class="icon-headphones"></i>
+        <p>HeadPhones</p>
+      </div>
+      <div class="category-card">
+        <i class="icon-gaming"></i>
+        <p>Gaming</p>
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button class="nav-button">❮</button>
+      <button class="nav-button">❯</button>
+    </div>
+  </div>
 
+
+ -->
+
+
+ <div class="main-container">
+  <aside class="sidebar">
+    <ul>
+      <li>Woman's Fashion</li>
+      <li>Men's Fashion</li>
+      <li>Electronics</li>
+      <li>Home & Lifestyle</li>
+      <li>Medicine</li>
+      <li>Sports & Outdoor</li>
+      <li>Baby's & Toys</li>
+      <li>Groceries & Pets</li>
+      <li>Health & Beauty</li>
+    </ul>
+  </aside>
+
+  <section class="carousel-container">
+    <!-- Image Carousel -->
+    <div class="carousel">
+      <div
+        *ngFor="let image of images; let i = index"
+        class="carousel-item"
+        [ngClass]="{ active: i === currentIndex }"
+      >
+        <img [src]="image" alt="Slide {{ i + 1 }}" />
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="prev" (click)="previousSlide()">❮</button>
+      <button class="next" (click)="nextSlide()">❯</button>
+    </div>
+
+    <div class="carousel-indicators">
+      <span
+        *ngFor="let _ of images; let i = index"
+        (click)="goToSlide(i)"
+        [ngClass]="{ active: i === currentIndex }"
+      ></span>
+    </div>
+  </section>
+</div>
+
+<section class="carousel-container">
+  <!-- Countdown Timer -->
+  <div class="countdown">
+    <h2>Flash Sales</h2>
+    <p>{{ countdown.days }}d : {{ countdown.hours }}h : {{ countdown.minutes }}m : {{ countdown.seconds }}s</p>
+  </div>
+
+  <!-- Card Carousel -->
+  <div class="card-carousel">
+    <div class="card-wrapper">
+      <div
+        class="card"
+        *ngFor="let card of cards.slice(cardIndex, cardIndex + 3); let i = index"
+        [attr.data-index]="i"
+      >
+        <img class="card-img" [src]="card.image" alt="{{ card.title }}" />
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+      </div>
+    </div>
+    <div class="card-controls">
+      <button (click)="handlePrevCard()" [disabled]="cardIndex === 0">❮ Previous</button>
+      <button (click)="handleNextCard()" [disabled]="cardIndex + 3 >= cards.length">Next ❯</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<div class="category-section">
+  <div class="category-header">
+    <span class="icon"></span>
+    <h3 class="category-title">Categories</h3>
+  </div>
+  <h2 class="section-title">Browse By Category</h2>
+  <div class="categories">
+    <div class="category-card">
+      <i class="icon-phone"></i>
+      <p>Phones</p>
+    </div>
+    <div class="category-card">
+      <i class="icon-computer"></i>
+      <p>Computers</p>
+    </div>
+    <div class="category-card">
+      <i class="icon-watch"></i>
+      <p>SmartWatch</p>
+    </div>
+    <div class="category-card active">
+      <i class="icon-camera"></i>
+      <p>Camera</p>
+    </div>
+    <div class="category-card">
+      <i class="icon-headphones"></i>
+      <p>HeadPhones</p>
+    </div>
+    <div class="category-card">
+      <i class="icon-gaming"></i>
+      <p>Gaming</p>
+    </div>
+  </div>
+  <div class="navigation-buttons">
+    <button class="nav-button">❮</button>
+    <button class="nav-button">❯</button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="products">
+  <div
+    *ngFor="let product of products"
+    class="product-card"
+    (mouseenter)="hoveredProduct = product"
+    (mouseleave)="hoveredProduct = null"
+  >
+    <!-- Product Image -->
+    <div class="product-image">
+      <img [src]="product.image" alt="{{ product.name }}" />
+      <button
+        *ngIf="hoveredProduct === product"
+        (click)="addToCart(product)"
+        class="add-to-cart-btn"
+      >
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Product Info -->
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-price">${{ product.price }}</p>
+    <div class="product-rating">
+      {{ product.rating }} ★
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="products">
+  <div
+    *ngFor="let product of products"
+    class="product-card"
+    (mouseenter)="hoveredProduct = product"
+    (mouseleave)="hoveredProduct = null"
+  >
+    <img [src]="product.image" alt="{{ product.name }}" />
+    <h3>{{ product.name }}</h3>
+    <p>Price: ${{ product.price }}</p>
+    <p>Rating: {{ product.rating }} ★</p>
+    <button
+      *ngIf="hoveredProduct === product"
+      (click)="addToCart(product)"
+      class="add-to-cart-btn"
+    >
+      Add to Cart
+    </button>
+  </div>
+</div> -->
