@@ -1,1 +1,30 @@
-<p>contact works!</p>
+<div class="contact-page">
+    <nav class="breadcrumb">
+      <a href="#">Home</a> / <span>Contact</span>
+    </nav>
+    <div class="container">
+      <div class="info-box">
+        <div class="info-item">
+          <h3><span class="icon">📞</span> Call To Us</h3>
+          <p>We are available 24/7, 7 days a week.</p>
+          <p>Phone: +880161122222</p>
+        </div>
+        <hr>
+        <div class="info-item">
+          <h3><span class="icon">✉️</span> Write To Us</h3>
+          <p>Fill out our form and we will contact you within 24 hours.</p>
+          <p>Emails: customer&#64;exclusive.com</p>
+          <p>Emails: support&#64;exclusive.com</p>
+        </div>
+      </div>
+      <form #contactForm (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Your Name *" required>
+          <input type="email" id="email" placeholder="Your Email *" required>
+          <input type="text" id="phone" placeholder="Your Phone *" required>
+        </div>
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </div>

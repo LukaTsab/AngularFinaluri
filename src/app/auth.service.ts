@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private users = [
-    { email: 'admin@example.com', password: 'admin' },
+    { email: 'user@example.com', password: 'user' },
   ];
   private loggedIn = false;
 

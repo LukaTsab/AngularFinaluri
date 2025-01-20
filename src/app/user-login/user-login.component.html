@@ -1,4 +1,4 @@
-<div class="login-container">
+<!-- <div class="login-container">
     <h2>Admin</h2>
     <form (submit)="onLogin($event)">
       <label for="email">Email</label>
@@ -11,4 +11,24 @@
     </form>
     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
   </div>
-  
+   -->
+
+   <div class="container">
+    <div class="image-container">
+        <img src="image.png" alt="Shopping cart and phone" />
+    </div>
+    <div class="login-container">
+        <h2>Log in to Exclusive</h2>
+        <form (submit)="onLogin($event)">
+            <label for="email">Email or Phone Number</label>
+            <input type="email" id="email" [(ngModel)]="email" name="email" required />
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" required />
+        
+            <button type="submit">Log In</button>
+        </form>
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+        <p><a href="#">Forget Password?</a></p>
+    </div>
+</div>
